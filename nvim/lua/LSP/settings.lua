@@ -1,3 +1,6 @@
+require("neodev").setup({
+  library = { plugins = "nvim-dap" }
+})
 
 -- settings
 local lua_settings = {
@@ -14,6 +17,7 @@ local lua_settings = {
     },
   },
 }
+
 
 Settings = {
   lua_settings,

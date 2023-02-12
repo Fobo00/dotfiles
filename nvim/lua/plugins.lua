@@ -57,10 +57,33 @@ return packer.startup(function(use)
   use "nvim-lua/popup.nvim" -- An implementation of the Popup API from vim in Neovim
   use "nvim-lua/plenary.nvim" -- Useful lua functions used ny lots of plugins
 
+  use { "akinsho/toggleterm.nvim", tag = '*', config = function()
+    require("toggleterm").setup {}
+  end
+  }
+
+
+  use {
+    "utilyre/barbecue.nvim",
+    tag = "*",
+    requires = {
+      "SmiteshP/nvim-navic",
+      "nvim-tree/nvim-web-devicons",
+    },
+    config = function()
+      require("barbecue").setup()
+    end
+  }
+
   use {
     "nvim-telescope/telescope.nvim",
     branch = "0.1.x",
     requires = "BurntSushi/ripgrep"
+  }
+
+  use {
+    "windwp/nvim-autopairs",
+    config = function() require("nvim-autopairs").setup {} end
   }
 
   use {
@@ -80,7 +103,14 @@ return packer.startup(function(use)
   -- Color Theme
   use "tanvirtin/monokai.nvim"
 
+  -- status lines
   use 'feline-nvim/feline.nvim'
+
+  use {
+    'nvim-lualine/lualine.nvim',
+    requires = { 'kyazdani42/nvim-web-devicons', opt = true },
+  }
+
   -- cmp plugins
   use "hrsh7th/nvim-cmp" -- The completion plugin
   use "hrsh7th/cmp-buffer" -- buffer completions
@@ -96,6 +126,52 @@ return packer.startup(function(use)
 
   -- LSP
   use "neovim/nvim-lspconfig" -- enable LSP
+  use "folke/neodev.nvim"
+
+  -- Debugging
+  use { "rcarriga/nvim-dap-ui",
+    requires = { "mfussenegger/nvim-dap" },
+    config = function()
+      require("dapui").setup({
+        icons = {
+          expanded = "⯆",
+          collapsed = "⯈",
+          circular = "↺"
+        },
+        mappings = {
+          expand = "<CR>",
+          open = "o",
+          remove = "d"
+        },
+        sidebar = {
+          elements = {
+            -- You can change the order of elements in the sidebar
+            "scopes",
+            "scopes",
+            "watches"
+          },
+          width = 40,
+          position = "left" -- Can be "left" or "right"
+        },
+        tray = {
+          elements = {
+            "repl"
+          },
+          height = 10,
+          position = "bottom" -- Can be "bottom" or "top"
+        }
+      })
+    end
+  }
+
+  use {
+    "jay-babu/mason-nvim-dap.nvim",
+    config = function()
+      require("mason-nvim-dap").setup {
+        automatic_setup = true,
+      }
+    end
+  }
 
   use 'mfussenegger/nvim-lint'
   -- use "williamboman/nvim-lsp-installer"
@@ -105,11 +181,50 @@ return packer.startup(function(use)
 
   -- tree sitter
   use {
-      "nvim-treesitter/nvim-treesitter",
-      run = ":TSUpdate",
-    }
+    "nvim-treesitter/nvim-treesitter",
+    run = ":TSUpdate",
+  }
   use "p00f/nvim-ts-rainbow"
 
+
+  use({
+    "folke/noice.nvim",
+    config = function()
+      require("noice").setup({
+        -- add any options here
+        lsp = {
+          -- override markdown rendering so that **cmp** and other plugins use **Treesitter**
+          override = {
+            ["vim.lsp.util.convert_input_to_markdown_lines"] = true,
+            ["vim.lsp.util.stylize_markdown"] = true,
+            ["cmp.entry.get_documentation"] = true,
+          },
+        },
+        -- you can enable a preset for easier configuration
+        presets = {
+          bottom_search = true, -- use a classic bottom cmdline for search
+          command_palette = true, -- position the cmdline and popupmenu together
+          long_message_to_split = true, -- long messages will be sent to a split
+          inc_rename = false, -- enables an input dialog for inc-rename.nvim
+          lsp_doc_border = true, -- add a border to hover docs and signature help
+        },
+      })
+    end,
+    requires = {
+      -- if you lazy-load any plugin below, make sure to add proper `module="..."` entries
+      "MunifTanjim/nui.nvim",
+      -- OPTIONAL:
+      --   `nvim-notify` is only needed, if you want to use the notification view.
+      --   If not available, we use `mini` as the fallback
+      "rcarriga/nvim-notify",
+    },
+    disable = false,
+  })
+
+
+
+  --------------------testing---------------------------
+--  use { 'simrat39/rust-tools.nvim', }
 
 
 
@@ -120,4 +235,3 @@ return packer.startup(function(use)
     require("packer").sync()
   end
 end)
-

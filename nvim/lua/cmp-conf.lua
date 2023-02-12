@@ -8,6 +8,11 @@ if not snip_status_ok then
   return
 end
 
+local pair_status_ok, auto_pairs = pcall(require, "nvim-autopairs.completion.cmp")
+if not pair_status_ok then
+  return
+end
+
 require("luasnip/loaders/from_vscode").lazy_load()
 
 local check_backspace = function()
@@ -130,3 +135,24 @@ cmp.setup {
     native_menu = false,
   },
 }
+
+local handlers = require("nvim-autopairs.completion.handlers")
+
+-- autopairs
+cmp.event:on(
+  'confirm_done',
+  auto_pairs.on_confirm_done({
+    filetypes = {
+      ["*"] = {
+        ["("] = {
+          kind = {
+            cmp.lsp.CompletionItemKind.Function,
+            cmp.lsp.CompletionItemKind.Method,
+          },
+          handler = handlers["*"]
+        }
+      },
+    }
+  })
+)
+

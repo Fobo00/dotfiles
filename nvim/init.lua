@@ -8,8 +8,8 @@ require("LSP")
 require("treesitter-conf")
 
 require("bufferline-conf")
+require("lualine-conf")
 
 require("nvim-tree").setup()
-require("feline").setup()
 
 vim.cmd [[colorscheme monokai]]

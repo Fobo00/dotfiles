@@ -1,4 +1,4 @@
-local on_attach = function(client, bufnr)
+local n_on_attach = function(client, bufnr)
   -- Enable completion triggered by <c-x><c-o>
   vim.api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
 
@@ -38,12 +38,17 @@ require("mason").setup({
   }
 })
 
+require("mason-nvim-dap").setup()
+
+require("LSP.dap-conf")
+
 require("mason-lspconfig").setup()
 
-require("lspconfig").sumneko_lua.setup { opts = lua_settings, on_attach = on_attach }
-require("lspconfig").clangd.setup { on_attach = on_attach }
+require("lspconfig").lua_ls.setup { opts = lua_settings, on_attach = n_on_attach }
+-- require("lspconfig").clangd.setup { on_attach = on_attach }
 
-require("lspconfig").rust_analyzer.setup { on_attach = on_attach }
+require("lspconfig").rust_analyzer.setup { on_attach = n_on_attach }
+-- require("rust-tools").setup { on_attach = rust_on_attach }
 
 require("lint").linters_by_ft = {
   Lua = { 'selene', }
