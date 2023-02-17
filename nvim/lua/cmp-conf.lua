@@ -3,7 +3,7 @@ if not cmp_status_ok then
   return
 end
 
-local snip_status_ok, luasnip = pcall(require, "luasnip")
+local snip_status_ok, snippets = pcall(require, "luasnip")
 if not snip_status_ok then
   return
 end
@@ -53,7 +53,7 @@ local kind_icons = {
 cmp.setup {
   snippet = {
     expand = function(args)
-      luasnip.lsp_expand(args.body) -- For `luasnip` users.
+      snippets.lsp_expand(args.body) -- For `luasnip` users.
     end,
   },
   mapping = {
@@ -73,10 +73,10 @@ cmp.setup {
     ["<Tab>"] = cmp.mapping(function(fallback)
       if cmp.visible() then
         cmp.select_next_item()
-      elseif luasnip.expandable() then
-        luasnip.expand()
-      elseif luasnip.expand_or_jumpable() then
-        luasnip.expand_or_jump()
+      elseif snippets.expandable() then
+        snippets.expand()
+      elseif snippets.expand_or_jumpable() then
+        snippets.expand_or_jump()
       elseif check_backspace() then
         fallback()
       else
@@ -89,8 +89,8 @@ cmp.setup {
     ["<S-Tab>"] = cmp.mapping(function(fallback)
       if cmp.visible() then
         cmp.select_prev_item()
-      elseif luasnip.jumpable(-1) then
-        luasnip.jump(-1)
+      elseif snippets.jumpable(-1) then
+        snippets.jump(-1)
       else
         fallback()
       end

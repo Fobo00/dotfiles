@@ -2,6 +2,11 @@ local n_on_attach = function(client, bufnr)
   -- Enable completion triggered by <c-x><c-o>
   vim.api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
 
+
+  local ih = require("inlay-hints")
+  ih.set_all()
+  ih.on_attach(client, bufnr)
+
   -- Mappings.
   -- See `:help vim.lsp.*` for documentation on any of the below functions
   local bufopts = { noremap = true, silent = true, buffer = bufnr }
@@ -25,7 +30,10 @@ end -- on_attach
 
 
 
-local lua_settings = require("LSP/settings")[0]
+local lua_settings = require("LSP/settings").lua_settings
+local rust_settings = require("LSP/settings").rust_settings
+local rust_capa = require("cmp_nvim_lsp").default_capabilities()
+-- local rust_on_attach = require("LSP/settings").rust_on_attach
 
 
 require("mason").setup({
@@ -45,10 +53,9 @@ require("LSP.dap-conf")
 require("mason-lspconfig").setup()
 
 require("lspconfig").lua_ls.setup { opts = lua_settings, on_attach = n_on_attach }
--- require("lspconfig").clangd.setup { on_attach = on_attach }
 
-require("lspconfig").rust_analyzer.setup { on_attach = n_on_attach }
--- require("rust-tools").setup { on_attach = rust_on_attach }
+require("lspconfig").rust_analyzer.setup { opts = rust_settings, on_attach = n_on_attach, capabilities = rust_capa,}
+-- require("rust-tools").setup({ on_attach = rust_on_attach })
 
 require("lint").linters_by_ft = {
   Lua = { 'selene', }

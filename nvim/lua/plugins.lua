@@ -117,6 +117,7 @@ return packer.startup(function(use)
   use "hrsh7th/cmp-path" -- path completions
   use "hrsh7th/cmp-cmdline" -- cmdline completions
   use "saadparwaiz1/cmp_luasnip" -- snippet completions
+  use "norcalli/snippets.nvim"
   use "hrsh7th/cmp-nvim-lua"
   use "hrsh7th/cmp-nvim-lsp"
 
@@ -127,6 +128,13 @@ return packer.startup(function(use)
   -- LSP
   use "neovim/nvim-lspconfig" -- enable LSP
   use "folke/neodev.nvim"
+
+  use {
+    "simrat39/inlay-hints.nvim",
+    config = function ()
+      require("inlay-hints").setup()
+    end
+  }
 
   -- Debugging
   use { "rcarriga/nvim-dap-ui",
@@ -174,7 +182,6 @@ return packer.startup(function(use)
   }
 
   use 'mfussenegger/nvim-lint'
-  -- use "williamboman/nvim-lsp-installer"
   use "williamboman/mason.nvim" -- simple to use language server installer
   use "williamboman/mason-lspconfig.nvim"
 
@@ -218,7 +225,7 @@ return packer.startup(function(use)
       --   If not available, we use `mini` as the fallback
       "rcarriga/nvim-notify",
     },
-    disable = false,
+    disable = true,
   })
 
 
@@ -226,6 +233,10 @@ return packer.startup(function(use)
   --------------------testing---------------------------
 --  use { 'simrat39/rust-tools.nvim', }
 
+  use {
+    'simrat39/rust-tools.nvim',
+    requires = 'neovim/nvim-lspconfig',
+  }
 
 
 

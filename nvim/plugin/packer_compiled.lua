@@ -135,6 +135,12 @@ _G.packer_plugins = {
     path = "C:\\Users\\franc\\AppData\\Local\\nvim-data\\site\\pack\\packer\\start\\impatient.nvim",
     url = "https://github.com/lewis6991/impatient.nvim"
   },
+  ["inlay-hints.nvim"] = {
+    config = { "\27LJ\2\n9\0\0\3\0\3\0\0066\0\0\0'\2\1\0B\0\2\0029\0\2\0B\0\1\1K\0\1\0\nsetup\16inlay-hints\frequire\0" },
+    loaded = true,
+    path = "C:\\Users\\franc\\AppData\\Local\\nvim-data\\site\\pack\\packer\\start\\inlay-hints.nvim",
+    url = "https://github.com/simrat39/inlay-hints.nvim"
+  },
   ["lualine.nvim"] = {
     loaded = true,
     path = "C:\\Users\\franc\\AppData\\Local\\nvim-data\\site\\pack\\packer\\start\\lualine.nvim",
@@ -166,17 +172,6 @@ _G.packer_plugins = {
     path = "C:\\Users\\franc\\AppData\\Local\\nvim-data\\site\\pack\\packer\\start\\neodev.nvim",
     url = "https://github.com/folke/neodev.nvim"
   },
-  ["noice.nvim"] = {
-    config = { "\27LJ\2\n�\2\0\0\5\0\n\0\r6\0\0\0'\2\1\0B\0\2\0029\0\2\0005\2\6\0005\3\4\0005\4\3\0=\4\5\3=\3\a\0025\3\b\0=\3\t\2B\0\2\1K\0\1\0\fpresets\1\0\5\19lsp_doc_border\2\15inc_rename\1\26long_message_to_split\2\20command_palette\2\18bottom_search\2\blsp\1\0\0\roverride\1\0\0\1\0\3 cmp.entry.get_documentation\2\"vim.lsp.util.stylize_markdown\0021vim.lsp.util.convert_input_to_markdown_lines\2\nsetup\nnoice\frequire\0" },
-    loaded = true,
-    path = "C:\\Users\\franc\\AppData\\Local\\nvim-data\\site\\pack\\packer\\start\\noice.nvim",
-    url = "https://github.com/folke/noice.nvim"
-  },
-  ["nui.nvim"] = {
-    loaded = true,
-    path = "C:\\Users\\franc\\AppData\\Local\\nvim-data\\site\\pack\\packer\\start\\nui.nvim",
-    url = "https://github.com/MunifTanjim/nui.nvim"
-  },
   ["nvim-autopairs"] = {
     config = { "\27LJ\2\n@\0\0\3\0\3\0\a6\0\0\0'\2\1\0B\0\2\0029\0\2\0004\2\0\0B\0\2\1K\0\1\0\nsetup\19nvim-autopairs\frequire\0" },
     loaded = true,
@@ -194,7 +189,7 @@ _G.packer_plugins = {
     url = "https://github.com/mfussenegger/nvim-dap"
   },
   ["nvim-dap-ui"] = {
-    config = { "\27LJ\2\n�\2\0\0\5\0\15\0\0196\0\0\0'\2\1\0B\0\2\0029\0\2\0005\2\4\0005\3\3\0=\3\5\0025\3\6\0=\3\a\0025\3\t\0005\4\b\0=\4\n\3=\3\v\0025\3\r\0005\4\f\0=\4\n\3=\3\14\2B\0\2\1K\0\1\0\ttray\1\0\2\vheight\3\n\rposition\vbottom\1\2\0\0\trepl\fsidebar\relements\1\0\2\nwidth\3(\rposition\tleft\1\4\0\0\vscopes\vscopes\fwatches\rmappings\1\0\3\vexpand\t<CR>\vremove\6d\topen\6o\nicons\1\0\0\1\0\3\rexpanded\b⯆\14collapsed\b⯈\rcircular\b↺\nsetup\ndapui\frequire\0" },
+    config = { "\27LJ\2\n�\2\0\0\5\0\15\0\0196\0\0\0'\2\1\0B\0\2\0029\0\2\0005\2\4\0005\3\3\0=\3\5\0025\3\6\0=\3\a\0025\3\t\0005\4\b\0=\4\n\3=\3\v\0025\3\r\0005\4\f\0=\4\n\3=\3\14\2B\0\2\1K\0\1\0\ttray\1\0\2\rposition\vbottom\vheight\3\n\1\2\0\0\trepl\fsidebar\relements\1\0\2\rposition\tleft\nwidth\3(\1\4\0\0\vscopes\vscopes\fwatches\rmappings\1\0\3\vexpand\t<CR>\vremove\6d\topen\6o\nicons\1\0\0\1\0\3\rcircular\b↺\rexpanded\b⯆\14collapsed\b⯈\nsetup\ndapui\frequire\0" },
     loaded = true,
     path = "C:\\Users\\franc\\AppData\\Local\\nvim-data\\site\\pack\\packer\\start\\nvim-dap-ui",
     url = "https://github.com/rcarriga/nvim-dap-ui"
@@ -213,11 +208,6 @@ _G.packer_plugins = {
     loaded = true,
     path = "C:\\Users\\franc\\AppData\\Local\\nvim-data\\site\\pack\\packer\\start\\nvim-navic",
     url = "https://github.com/SmiteshP/nvim-navic"
-  },
-  ["nvim-notify"] = {
-    loaded = true,
-    path = "C:\\Users\\franc\\AppData\\Local\\nvim-data\\site\\pack\\packer\\start\\nvim-notify",
-    url = "https://github.com/rcarriga/nvim-notify"
   },
   ["nvim-tree.lua"] = {
     loaded = true,
@@ -259,6 +249,16 @@ _G.packer_plugins = {
     path = "C:\\Users\\franc\\AppData\\Local\\nvim-data\\site\\pack\\packer\\start\\ripgrep",
     url = "https://github.com/BurntSushi/ripgrep"
   },
+  ["rust-tools.nvim"] = {
+    loaded = true,
+    path = "C:\\Users\\franc\\AppData\\Local\\nvim-data\\site\\pack\\packer\\start\\rust-tools.nvim",
+    url = "https://github.com/simrat39/rust-tools.nvim"
+  },
+  ["snippets.nvim"] = {
+    loaded = true,
+    path = "C:\\Users\\franc\\AppData\\Local\\nvim-data\\site\\pack\\packer\\start\\snippets.nvim",
+    url = "https://github.com/norcalli/snippets.nvim"
+  },
   ["telescope.nvim"] = {
     loaded = true,
     path = "C:\\Users\\franc\\AppData\\Local\\nvim-data\\site\\pack\\packer\\start\\telescope.nvim",
@@ -273,30 +273,30 @@ _G.packer_plugins = {
 }
 
 time([[Defining packer_plugins]], false)
--- Config for: barbecue.nvim
-time([[Config for barbecue.nvim]], true)
-try_loadstring("\27LJ\2\n6\0\0\3\0\3\0\0066\0\0\0'\2\1\0B\0\2\0029\0\2\0B\0\1\1K\0\1\0\nsetup\rbarbecue\frequire\0", "config", "barbecue.nvim")
-time([[Config for barbecue.nvim]], false)
--- Config for: mason-nvim-dap.nvim
-time([[Config for mason-nvim-dap.nvim]], true)
-try_loadstring("\27LJ\2\nT\0\0\3\0\4\0\a6\0\0\0'\2\1\0B\0\2\0029\0\2\0005\2\3\0B\0\2\1K\0\1\0\1\0\1\20automatic_setup\2\nsetup\19mason-nvim-dap\frequire\0", "config", "mason-nvim-dap.nvim")
-time([[Config for mason-nvim-dap.nvim]], false)
+-- Config for: inlay-hints.nvim
+time([[Config for inlay-hints.nvim]], true)
+try_loadstring("\27LJ\2\n9\0\0\3\0\3\0\0066\0\0\0'\2\1\0B\0\2\0029\0\2\0B\0\1\1K\0\1\0\nsetup\16inlay-hints\frequire\0", "config", "inlay-hints.nvim")
+time([[Config for inlay-hints.nvim]], false)
 -- Config for: nvim-autopairs
 time([[Config for nvim-autopairs]], true)
 try_loadstring("\27LJ\2\n@\0\0\3\0\3\0\a6\0\0\0'\2\1\0B\0\2\0029\0\2\0004\2\0\0B\0\2\1K\0\1\0\nsetup\19nvim-autopairs\frequire\0", "config", "nvim-autopairs")
 time([[Config for nvim-autopairs]], false)
+-- Config for: nvim-dap-ui
+time([[Config for nvim-dap-ui]], true)
+try_loadstring("\27LJ\2\n�\2\0\0\5\0\15\0\0196\0\0\0'\2\1\0B\0\2\0029\0\2\0005\2\4\0005\3\3\0=\3\5\0025\3\6\0=\3\a\0025\3\t\0005\4\b\0=\4\n\3=\3\v\0025\3\r\0005\4\f\0=\4\n\3=\3\14\2B\0\2\1K\0\1\0\ttray\1\0\2\rposition\vbottom\vheight\3\n\1\2\0\0\trepl\fsidebar\relements\1\0\2\rposition\tleft\nwidth\3(\1\4\0\0\vscopes\vscopes\fwatches\rmappings\1\0\3\vexpand\t<CR>\vremove\6d\topen\6o\nicons\1\0\0\1\0\3\rcircular\b↺\rexpanded\b⯆\14collapsed\b⯈\nsetup\ndapui\frequire\0", "config", "nvim-dap-ui")
+time([[Config for nvim-dap-ui]], false)
 -- Config for: toggleterm.nvim
 time([[Config for toggleterm.nvim]], true)
 try_loadstring("\27LJ\2\n<\0\0\3\0\3\0\a6\0\0\0'\2\1\0B\0\2\0029\0\2\0004\2\0\0B\0\2\1K\0\1\0\nsetup\15toggleterm\frequire\0", "config", "toggleterm.nvim")
 time([[Config for toggleterm.nvim]], false)
--- Config for: nvim-dap-ui
-time([[Config for nvim-dap-ui]], true)
-try_loadstring("\27LJ\2\n�\2\0\0\5\0\15\0\0196\0\0\0'\2\1\0B\0\2\0029\0\2\0005\2\4\0005\3\3\0=\3\5\0025\3\6\0=\3\a\0025\3\t\0005\4\b\0=\4\n\3=\3\v\0025\3\r\0005\4\f\0=\4\n\3=\3\14\2B\0\2\1K\0\1\0\ttray\1\0\2\vheight\3\n\rposition\vbottom\1\2\0\0\trepl\fsidebar\relements\1\0\2\nwidth\3(\rposition\tleft\1\4\0\0\vscopes\vscopes\fwatches\rmappings\1\0\3\vexpand\t<CR>\vremove\6d\topen\6o\nicons\1\0\0\1\0\3\rexpanded\b⯆\14collapsed\b⯈\rcircular\b↺\nsetup\ndapui\frequire\0", "config", "nvim-dap-ui")
-time([[Config for nvim-dap-ui]], false)
--- Config for: noice.nvim
-time([[Config for noice.nvim]], true)
-try_loadstring("\27LJ\2\n�\2\0\0\5\0\n\0\r6\0\0\0'\2\1\0B\0\2\0029\0\2\0005\2\6\0005\3\4\0005\4\3\0=\4\5\3=\3\a\0025\3\b\0=\3\t\2B\0\2\1K\0\1\0\fpresets\1\0\5\19lsp_doc_border\2\15inc_rename\1\26long_message_to_split\2\20command_palette\2\18bottom_search\2\blsp\1\0\0\roverride\1\0\0\1\0\3 cmp.entry.get_documentation\2\"vim.lsp.util.stylize_markdown\0021vim.lsp.util.convert_input_to_markdown_lines\2\nsetup\nnoice\frequire\0", "config", "noice.nvim")
-time([[Config for noice.nvim]], false)
+-- Config for: mason-nvim-dap.nvim
+time([[Config for mason-nvim-dap.nvim]], true)
+try_loadstring("\27LJ\2\nT\0\0\3\0\4\0\a6\0\0\0'\2\1\0B\0\2\0029\0\2\0005\2\3\0B\0\2\1K\0\1\0\1\0\1\20automatic_setup\2\nsetup\19mason-nvim-dap\frequire\0", "config", "mason-nvim-dap.nvim")
+time([[Config for mason-nvim-dap.nvim]], false)
+-- Config for: barbecue.nvim
+time([[Config for barbecue.nvim]], true)
+try_loadstring("\27LJ\2\n6\0\0\3\0\3\0\0066\0\0\0'\2\1\0B\0\2\0029\0\2\0B\0\1\1K\0\1\0\nsetup\rbarbecue\frequire\0", "config", "barbecue.nvim")
+time([[Config for barbecue.nvim]], false)
 
 _G._packer.inside_compile = false
 if _G._packer.needs_bufread == true then

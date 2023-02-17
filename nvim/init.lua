@@ -2,6 +2,7 @@ require("impatient")
 
 require("options")
 require("plugins")
+-- require("test-plugs")
 require("keymaps")
 require("cmp-conf")
 require("LSP")
