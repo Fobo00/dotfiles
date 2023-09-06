@@ -22,11 +22,33 @@ local lua_settings = {
   }
 }
 
-local rust_capa = require("cmp_nvim_lsp").default_capabilities()
-
 local rust_settings = {
   settings = {
-    Rust = {
+    ["rust_analyzer"] = {
+      checkOnSave = {
+        command = "clippy" -- default: check
+      },
+
+      check = {
+        command = "clippy"
+      },
+
+      procMacro = {
+        enable = true -- default: false
+      },
+
+      inlayHints = {
+        closureCaptureHints = {
+          enable = true
+        },
+      },
+
+      interpret = {
+        tests = {
+          enable = true
+        },
+      },
+
     },
   },
 }

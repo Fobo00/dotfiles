@@ -15,7 +15,6 @@ local n_on_attach = function(client, bufnr)
 
   vim.keymap.set('n', 'K', function()
     vim.lsp.buf.hover()
-    vim.diagnostic.open_float()
   end, bufopts)
 
   vim.keymap.set('n', 'gi', vim.lsp.buf.implementation, bufopts)
@@ -34,7 +33,7 @@ local n_on_attach = function(client, bufnr)
 
   local actions_ok, actions = pcall(require, "actions-preview")
   if not actions_ok then
-    print("actions-preview not found!")
+    -- print("actions-preview not found!")
     vim.keymap.set('n', '<leader>ca', vim.lsp.buf.code_action, bufopts)
   else
     vim.keymap.set('n', '<leader>ca', actions.code_actions, bufopts)
@@ -69,20 +68,42 @@ require("mason").setup({
   }
 })
 
-require("mason-nvim-dap").setup()
+-- require("mason-nvim-dap").setup()
 
-require("LSP.dap-conf")
+-- require("LSP.dap-conf")
 
 require("mason-lspconfig").setup()
 
-require("lspconfig").lua_ls.setup { opts = lua_settings, on_attach = n_on_attach, capabilities = capabilities }
+require("lspconfig").lua_ls.setup { settings = lua_settings, on_attach = n_on_attach, capabilities = capabilities }
 
-require("lspconfig").rust_analyzer.setup { opts = rust_settings, on_attach = n_on_attach, capabilities = capabilities, }
+require("lspconfig").rust_analyzer.setup {
+  settings = {
+
+    ["rust-analyzer"] = {
+      checkOnSave = {
+        command = "clippy" -- default: check
+      },
+      procMacro = {
+        enable = true -- default: false
+      },
+      editor = {
+        formatOnType = true,
+      }
+    },
+  },
+
+  on_attach = n_on_attach,
+
+  capabilities = capabilities,
+}
 -- require("rust-tools").setup({ on_attach = rust_on_attach })
 
 require("lspconfig").marksman.setup {}
-
-require("lint").linters_by_ft = {
-  Lua = { 'selene', }
+require("lspconfig").asm_lsp.setup {
+  capabilities = capabilities,
 }
+
+--[[require("lint").linters_by_ft = {
+  Lua = { 'selene', }
+}]]
 -- require("lspconfig").pyright.setup { on_attach = on_attach }

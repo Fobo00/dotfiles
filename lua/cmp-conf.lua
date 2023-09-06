@@ -114,7 +114,7 @@ cmp.setup {
 --        neorg = "[Neorg]",
         buffer = "[Buffer]",
         path = "[Path]",
-        crates = "[Crates]",
+        -- crates = "[Crates]",
       })[entry.source.name]
       return vim_item
     end,
@@ -127,7 +127,7 @@ cmp.setup {
  --   { name = "neorg" },
     { name = "buffer" },
     { name = "path" },
-    { name = "crates" },
+    -- { name = "crates" },
   },
   confirm_opts = {
     behavior = cmp.ConfirmBehavior.Replace,
@@ -163,4 +163,4 @@ cmp.event:on(
   })
 )
 
-require('crates').setup {}
+-- require('crates').setup {}

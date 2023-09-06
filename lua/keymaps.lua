@@ -7,7 +7,6 @@ local keymap = vim.api.nvim_set_keymap
 
 --Remap space as leader key
 keymap("", "<Space>", "<Nop>", opts)
-keymap("n", "<C-U>", "Nop", opts)
 vim.g.mapleader = " "
 vim.g.maplocalleader = " "
 
@@ -29,7 +28,6 @@ keymap("n", "<C-l>", "<C-w>l", opts)
 keymap("n", "<C-F4>", ":bd<CR>", opts)
 
 -- keymap("n", "<leader>e", ":Lex 30<cr>", opts)
-keymap('n', '<C-b>', ':NvimTreeToggle<CR>', {noremap = true, silent = true})
 
 -- Resize with arrows
 keymap("n", "<C-Up>", ":resize +2<CR>", opts)
@@ -69,13 +67,13 @@ keymap("t", "<C-j>", "<C-\\><C-N><C-w>j", term_opts)
 keymap("t", "<C-k>", "<C-\\><C-N><C-w>k", term_opts)
 keymap("t", "<C-l>", "<C-\\><C-N><C-w>l", term_opts)
 
-keymap("n", "<leader>tt", "<cmd> ToggleTerm size=50 direction=vertical<CR>", {})
 
 
-keymap("n", "<leader>ff", "<cmd> Telescope find_files<CR>", opts)
 keymap("n", "<leader>lg", "<cmd> Telescope live_grep<CR>", opts)
+keymap("n", "<leader>ff", "<cmd> Telescope find_files<CR>", opts)
 
 
 -- LSP
 vim.keymap.set('n', '<leader>r', vim.diagnostic.open_float, opts)
-vim.keymap.set("n", "<leader><A-m>", require"dropbar.api".pick, opts)
+-- vim.keymap.set("n", "<leader><A-m>", require"dropbar.api".pick, opts)
+vim.keymap.set('n', 'P', ":YankyRingHistory<CR>", opts)
