@@ -48,7 +48,8 @@ end -- on_attach
 
 local lua_settings = require("LSP/settings").lua_settings
 local rust_settings = require("LSP/settings").rust_settings
-local capabilities = require("cmp_nvim_lsp").default_capabilities()
+local capabilities = require("cmp_nvim_lsp").default_capabilities(vim.lsp.protocol.make_client_capabilities())
+capabilities.textDocument.completion.completionItem.snippetSupport = true
 -- local rust_on_attach = require("LSP/settings").rust_on_attach
 
 local config = {
@@ -76,7 +77,9 @@ require("mason-lspconfig").setup()
 
 require("lspconfig").lua_ls.setup { settings = lua_settings, on_attach = n_on_attach, capabilities = capabilities }
 
-require("lspconfig").rust_analyzer.setup {
+require("lspconfig").clangd.setup { on_attach = n_on_attach, capabilities = capabilities }
+
+--[[ require("lspconfig").rust_analyzer.setup {
   settings = {
 
     ["rust-analyzer"] = {
@@ -95,7 +98,7 @@ require("lspconfig").rust_analyzer.setup {
   on_attach = n_on_attach,
 
   capabilities = capabilities,
-}
+}]]
 -- require("rust-tools").setup({ on_attach = rust_on_attach })
 
 require("lspconfig").marksman.setup {}

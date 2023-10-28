@@ -5,4 +5,5 @@ require("treesitter-conf")
 -- require("test-plugs")
 
 
-vim.cmd [[colorscheme kanagawa-dragon]]
+-- vim.cmd("colorscheme kanagawa-dragon")
+print(vim.uv.now())

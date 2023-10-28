@@ -1,7 +1,3 @@
-require("neodev").setup({
-  library = { plugins = { "nvim-dap", "nvim-dap-ui", "cmp_nvim_lsp", "nvim_cmp" } }
-})
-
 -- settings
 local lua_settings = {
   settings = {
@@ -66,7 +62,7 @@ local rust_on_attach = function(_, bufnr)
   local bufopts = { noremap = true, silent = true, buffer = bufnr }
   vim.keymap.set('n', 'gD', vim.lsp.buf.declaration, bufopts)
   vim.keymap.set('n', 'gd', vim.lsp.buf.definition, bufopts)
-  vim.keymap.set('n', 'K', vim.lsp.buf.hover, bufopts)
+  vim.keymap.set('n', 'K', rt.hover_actions.hover_actions, bufopts)
   vim.keymap.set('n', 'gi', vim.lsp.buf.implementation, bufopts)
   vim.keymap.set('n', '<C-k>', vim.lsp.buf.signature_help, bufopts)
   vim.keymap.set('n', '<leader>wa', vim.lsp.buf.add_workspace_folder, bufopts)
@@ -76,7 +72,7 @@ local rust_on_attach = function(_, bufnr)
   end, bufopts)
   vim.keymap.set('n', '<leader>D', vim.lsp.buf.type_definition, bufopts)
   vim.keymap.set('n', '<leader>rn', vim.lsp.buf.rename, bufopts)
-  vim.keymap.set('n', '<leader>ca', rt.code_action_group.code_action_group(), bufopts)
+  vim.keymap.set('n', '<leader>ca', ":RustCodeAction<CR>", bufopts)
   vim.keymap.set('n', 'gr', vim.lsp.buf.references, bufopts)
   --  vim.keymap.set('n', '<leader>fo', vim.lsp.buf.formatting, bufopts)
   vim.keymap.set('n', '<leader>fo', vim.lsp.buf.format, bufopts)
@@ -87,7 +83,6 @@ Settings = {
   lua_settings,
   rust_settings,
   rust_on_attach,
-  rust_capa,
 }
 
 return { Settings, }
