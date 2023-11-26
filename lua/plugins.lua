@@ -30,6 +30,17 @@ lazy.setup({
 	},
 
 	-------------------------------------------Completion-------------------------------------
+
+	{
+		"folke/neodev.nvim",
+		lazy = true,
+		event = "BufEnter",
+		ft = "lua",
+		config = function()
+			require("neodev").setup {}
+		end,
+	},
+
 	-- CMP Plugins
 	{
 		"hrsh7th/nvim-cmp",
@@ -46,13 +57,19 @@ lazy.setup({
 			"L3MON4D3/LuaSnip", -- snippet engine
 			-- "rafamadriz/friendly-snippets",
 			"saadparwaiz1/cmp_luasnip",
-			{ "windwp/nvim-autopairs", config = function() require("nvim-autopairs").setup {} end },
+			"nvim-autopairs",
 			"nvim-lspconfig",
 			-- { "saecki/crates.nvim", dependencies = "nvim-lua/plenary.nvim" },
 		},
 		config = function()
 			require("cmp-conf")
 		end,
+	},
+
+	{
+		"windwp/nvim-autopairs",
+		config = function() require("nvim-autopairs").setup {} end,
+		dependencies = { "boltlessengineer/smart-tab.nvim", config = function() require("smart-tab").setup {} end }
 	},
 
 	-- LSP
@@ -69,7 +86,9 @@ lazy.setup({
 		},
 	},
 
+	---------------------------------------Rust----------------------------------------
 	{
+		enabled = true,
 		"simrat39/rust-tools.nvim",
 		ft = "rust",
 		dependencies = {
@@ -90,26 +109,22 @@ lazy.setup({
 	},
 
 	{
+		enabled = false,
+		'vxpm/ferris.nvim',
+		opts = {
+			-- your options here
+		}
+	},
+
+	{
 		"williamboman/mason.nvim",
 		cmd = "Mason",
 		build = "MasonUpdate",
 		dependencies = "williamboman/mason-lspconfig.nvim",
 	},
 
-	{
-		"folke/neodev.nvim",
-		lazy = true,
-		event = "BufEnter",
-		ft = "lua",
-		config = function()
-			require("neodev").setup({
-				library = { plugins = { "nvim-dap", "nvim-dap-ui", "cmp_nvim_lsp", "nvim_cmp", "sttusline" } }
-			})
-		end,
-	},
-
-
 	----------------------------------------Utility---------------------------------------------------
+
 	{
 		"nvim-telescope/telescope.nvim",
 		version = "*",
@@ -120,10 +135,12 @@ lazy.setup({
 		keys = {
 			{ "<leader>lg", "<cmd> Telescope live_grep<CR>",  "n" },
 			{ "<leader>ff", "<cmd> Telescope find_files<CR>", "n" },
+			{ "<leader>td", "<cmd> Telescope diagnostics<CR>", "n" },
 		},
 		cmd = "Telescope find_files",
 		event = "VeryLazy",
 	},
+
 	{
 		"kyazdani42/nvim-tree.lua",
 		dependencies = "nvim-tree/nvim-web-devicons",
@@ -286,14 +303,11 @@ lazy.setup({
 	},
 
 	{
-		enabled = false,
 		'Bekaboo/dropbar.nvim',
 		lazy = false,
-		config = function()
-			require("dropbar").setup {
-				enable = false,
-			}
-		end
+		keys = {
+			{ "<leader><A-m>", "<cmd>lua require('dropbar.api').pick()<cr>" }
+		}
 	},
 
 

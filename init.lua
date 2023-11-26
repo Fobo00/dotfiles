@@ -6,4 +6,4 @@ require("treesitter-conf")
 
 
 -- vim.cmd("colorscheme kanagawa-dragon")
-print(vim.uv.now())
+-- print(vim.uv.now())
