@@ -3,19 +3,10 @@ if not cmp_status_ok then
 	return
 end
 
-local snip_status_ok, snippets = pcall(require, "luasnip")
-if not snip_status_ok then
-	return
-end
-
 local pair_status_ok, auto_pairs = pcall(require, "nvim-autopairs.completion.cmp")
 if not pair_status_ok then
 	return
 end
-
-require("luasnip/loaders/from_vscode").lazy_load()
-
-
 
 local check_backspace = function()
 	local col = vim.fn.col "." - 1
@@ -55,7 +46,7 @@ local kind_icons = {
 cmp.setup {
 	snippet = {
 		expand = function(args)
-			snippets.lsp_expand(args.body) -- For `luasnip` users.
+			vim.snippet.expand(args.body)
 		end,
 	},
 	mapping = {
@@ -75,10 +66,14 @@ cmp.setup {
 		["<Tab>"] = cmp.mapping(function(fallback)
 			if cmp.visible() then
 				cmp.select_next_item()
-			elseif snippets.expandable() then
-				snippets.expand()
-			elseif snippets.expand_or_jumpable() then
-				snippets.expand_or_jump()
+			--[[elseif snippets.expandable() then
+				snippets.expand()]]
+			elseif vim.snippet.jumpable(1) then
+				vim.schedule(function ()
+					vim.snippet.jump(1)
+				end)
+			--[[ elseif snippets.expand_or_jumpable() then
+				snippets.expand_or_jump()]]
 			elseif check_backspace() then
 				fallback()
 			else
@@ -91,8 +86,12 @@ cmp.setup {
 		["<S-Tab>"] = cmp.mapping(function(fallback)
 			if cmp.visible() then
 				cmp.select_prev_item()
-			elseif snippets.jumpable(-1) then
-				snippets.jump(-1)
+			--[[ elseif snippets.jumpable(-1) then
+				snippets.jump(-1)]]
+			elseif vim.snippet.jumpable(-1) then
+				vim.schedule(function ()
+					vim.snippet.jump(-1)
+				end)
 			else
 				fallback()
 			end
@@ -110,7 +109,7 @@ cmp.setup {
 			vim_item.menu = ({
 				nvim_lua = "[NVIM_LUA]",
 				nvim_lsp = "[NVIM_LSP]",
-				luasnip = "[Snippet]",
+				snippets = "[Snippet]",
 				--        neorg = "[Neorg]",
 				buffer = "[Buffer]",
 				path = "[Path]",
@@ -123,7 +122,7 @@ cmp.setup {
 		{ name = "nvim_lsp" },
 		--    { name = "nvim_lsp_signature_help" },
 		{ name = "nvim_lua" },
-		{ name = "luasnip" },
+		{ name = "snippets" },
 		--   { name = "neorg" },
 		{ name = "buffer" },
 		{ name = "path" },

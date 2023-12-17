@@ -46,9 +46,8 @@ return {
 			"hrsh7th/cmp-cmdline", -- cmdline completions
 			"hrsh7th/cmp-nvim-lua",
 			"hrsh7th/cmp-path", -- path completions
-			"L3MON4D3/LuaSnip", -- snippet engine
-			-- "rafamadriz/friendly-snippets",
-			"saadparwaiz1/cmp_luasnip",
+			{ "garymjr/nvim-snippets", opts = { friendly_snippets = true, create_cmp_source = true },
+				dependencies = "rafamadriz/friendly-snippets", },
 			"nvim-autopairs",
 			"nvim-lspconfig",
 			-- { "saecki/crates.nvim", dependencies = "nvim-lua/plenary.nvim" },
