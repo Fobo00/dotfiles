@@ -1,6 +1,7 @@
 return {
 
 	{
+		enabled = false,
 		"folke/neodev.nvim",
 		dependencies = {
 			"nathom/filetype.nvim",
@@ -46,9 +47,13 @@ return {
 			"hrsh7th/cmp-cmdline", -- cmdline completions
 			"hrsh7th/cmp-nvim-lua",
 			"hrsh7th/cmp-path", -- path completions
-			{ "garymjr/nvim-snippets", opts = { friendly_snippets = true, create_cmp_source = true },
-				dependencies = "rafamadriz/friendly-snippets", },
-			"nvim-autopairs",
+			{
+				"garymjr/nvim-snippets",
+				opts = { friendly_snippets = true, create_cmp_source = true },
+				dependencies = "rafamadriz/friendly-snippets",
+			},
+			-- "nvim-autopairs",
+			'echasnovski/mini.pairs',
 			"nvim-lspconfig",
 			-- { "saecki/crates.nvim", dependencies = "nvim-lua/plenary.nvim" },
 		},
@@ -58,13 +63,23 @@ return {
 	},
 
 	{
+		enabled = false,
 		"windwp/nvim-autopairs",
 		config = function() require("nvim-autopairs").setup {} end,
-		dependencies = { "boltlessengineer/smart-tab.nvim", config = function() require("smart-tab").setup {} end }
+		-- dependencies = { "boltlessengineer/smart-tab.nvim", config = function() require("smart-tab").setup {} end }
+	},
+
+	{
+		'echasnovski/mini.pairs',
+		version = false,
+		config = function()
+			require("mini.pairs").setup {}
+		end
 	},
 
 	-- LSP
 	{
+		-- enabled = false,
 		"neovim/nvim-lspconfig",
 		event = "BufEnter",
 		config = function()

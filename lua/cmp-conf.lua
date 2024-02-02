@@ -3,10 +3,10 @@ if not cmp_status_ok then
 	return
 end
 
-local pair_status_ok, auto_pairs = pcall(require, "nvim-autopairs.completion.cmp")
+--[[local pair_status_ok, auto_pairs = pcall(require, "nvim-autopairs.completion.cmp")
 if not pair_status_ok then
 	return
-end
+end]]
 
 local check_backspace = function()
 	local col = vim.fn.col "." - 1
@@ -66,13 +66,18 @@ cmp.setup {
 		["<Tab>"] = cmp.mapping(function(fallback)
 			if cmp.visible() then
 				cmp.select_next_item()
-			--[[elseif snippets.expandable() then
+				--[[elseif snippets.expandable() then
 				snippets.expand()]]
 			elseif vim.snippet.jumpable(1) then
-				vim.schedule(function ()
+				vim.schedule(function()
 					vim.snippet.jump(1)
 				end)
-			--[[ elseif snippets.expand_or_jumpable() then
+			-- else
+			-- 	vim.schedule(function()
+			-- 		vim.snippet.jump(1)
+			-- 	end)
+			-- end
+				--[[ elseif snippets.expand_or_jumpable() then
 				snippets.expand_or_jump()]]
 			elseif check_backspace() then
 				fallback()
@@ -80,16 +85,30 @@ cmp.setup {
 				fallback()
 			end
 		end, {
-			"i",
-			"s",
+			"i", "s"
 		}),
+		-- ["<Tab>"] = cmp.mapping(function(fallback)
+		-- 	if cmp.visible() then
+		-- 		cmp.select_next_item()
+		-- 		--[[elseif snippets.expandable() then
+		-- 		snippets.expand()]]
+		-- 		--[[ elseif snippets.expand_or_jumpable() then
+		-- 		snippets.expand_or_jump()]]
+		-- 	else
+		-- 		vim.schedule(function()
+		-- 			vim.snippet.jump(1)
+		-- 		end)
+		-- 	end
+		-- end, {
+		-- 	"s",
+		-- }),
 		["<S-Tab>"] = cmp.mapping(function(fallback)
 			if cmp.visible() then
 				cmp.select_prev_item()
-			--[[ elseif snippets.jumpable(-1) then
+				--[[ elseif snippets.jumpable(-1) then
 				snippets.jump(-1)]]
 			elseif vim.snippet.jumpable(-1) then
-				vim.schedule(function ()
+				vim.schedule(function()
 					vim.snippet.jump(-1)
 				end)
 			else
@@ -119,10 +138,10 @@ cmp.setup {
 		end,
 	},
 	sources = {
+		{ name = "snippets" },
 		{ name = "nvim_lsp" },
 		--    { name = "nvim_lsp_signature_help" },
 		{ name = "nvim_lua" },
-		{ name = "snippets" },
 		--   { name = "neorg" },
 		{ name = "buffer" },
 		{ name = "path" },
@@ -134,6 +153,7 @@ cmp.setup {
 	},
 	window = {
 		documentation = cmp.config.window.bordered(),
+		completion = cmp.config.window.bordered(),
 	}
 	,
 	experimental = {
@@ -142,10 +162,10 @@ cmp.setup {
 	},
 }
 
-local handlers = require("nvim-autopairs.completion.handlers")
+-- local handlers = require("nvim-autopairs.completion.handlers")
 
 -- autopairs
-cmp.event:on(
+--[[cmp.event:on(
 	'confirm_done',
 	auto_pairs.on_confirm_done({
 		filetypes = {
@@ -160,18 +180,18 @@ cmp.event:on(
 			},
 		}
 	})
-)
+)]]
 
-vim.lsp.util.stylize_markdown = function(bufnr, contents, opts)
-	contents = vim.lsp.util._normalize_markdown(contents, {
-		width = vim.lsp.util._make_floating_popup_size(contents, opts),
-	})
-
-	vim.bo[bufnr].filetype = "markdown"
-	vim.treesitter.start(bufnr)
-	vim.api.nvim_buf_set_lines(bufnr, 0, -1, false, contents)
-
-	return contents
-end
+-- vim.lsp.util.stylize_markdown = function(bufnr, contents, opts)
+-- 	contents = vim.lsp.util._normalize_markdown(contents, {
+-- 		width = vim.lsp.util._make_floating_popup_size(contents, opts),
+-- 	})
+--
+-- 	vim.bo[bufnr].filetype = "markdown"
+-- 	vim.treesitter.start(bufnr)
+-- 	vim.api.nvim_buf_set_lines(bufnr, 0, -1, false, contents)
+--
+-- 	return contents
+-- end
 
 -- require('crates').setup {}

@@ -8,8 +8,8 @@ return {
 			"nvim-lua/plenary.nvim",
 		},
 		keys = {
-			{ "<leader>lg", "<cmd> Telescope live_grep<CR>",  "n" },
-			{ "<leader>ff", "<cmd> Telescope find_files<CR>", "n" },
+			{ "<leader>lg", "<cmd> Telescope live_grep<CR>",   "n" },
+			{ "<leader>ff", "<cmd> Telescope find_files<CR>",  "n" },
 			{ "<leader>td", "<cmd> Telescope diagnostics<CR>", "n" },
 		},
 		cmd = "Telescope find_files",
@@ -41,5 +41,7 @@ return {
 			require("auto-hlsearch").setup {}
 		end
 	},
+
+	"LintaoAmons/cd-project.nvim",
 
 }

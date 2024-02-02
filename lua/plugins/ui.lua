@@ -33,6 +33,13 @@ return {
 	},
 
 	{
+		'echasnovski/mini.indentscope',
+		event = "VeryLazy",
+		version = false,
+		opts = {}
+	},
+
+	{
 		'Bekaboo/dropbar.nvim',
 		lazy = false,
 		keys = {

@@ -3,9 +3,9 @@ local n_on_attach = function(client, bufnr)
 	vim.api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
 
 
-	local ih = require("inlay-hints")
-	ih.set_all()
-	ih.on_attach(client, bufnr)
+	-- local ih = require("inlay-hints")
+	-- ih.set_all()
+	-- ih.on_attach(client, bufnr)
 
 	-- Mappings.
 	-- See `:help vim.lsp.*` for documentation on any of the below functions
@@ -112,6 +112,13 @@ require("lspconfig").clangd.setup { on_attach = n_on_attach, capabilities = capa
 require("lspconfig").marksman.setup {}
 require("lspconfig").asm_lsp.setup {
 	capabilities = capabilities,
+}
+
+local pid = vim.fn.getpid()
+require("lspconfig").omnisharp.setup {
+	cmd = { "omnisharp-mono", "--languageserver", "--hostPID", tostring(pid) },
+	capabilities = capabilities,
+	on_attach = n_on_attach,
 }
 
 --[[require("lint").linters_by_ft = {
