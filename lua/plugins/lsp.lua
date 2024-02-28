@@ -4,7 +4,6 @@ return {
 		enabled = false,
 		"folke/neodev.nvim",
 		dependencies = {
-			"nathom/filetype.nvim",
 			"nvim-lua/plenary.nvim",
 		},
 		--[[opts = {
@@ -22,7 +21,8 @@ return {
 			lspconfig = true,
 			pathStrict = false,
 		},]]
-		config = function()
+		opts = {},
+		--[[config = function()
 			require("neodev").setup {
 				override = function(root_dir, library)
 					library.enabled = true
@@ -31,7 +31,7 @@ return {
 				-- lspconfig = true,
 				pathStrict = true,
 			}
-		end
+		end]]
 	},
 
 	-- CMP Plugins
