@@ -112,6 +112,18 @@ require("lspconfig").clangd.setup { on_attach = n_on_attach, capabilities = capa
 require("lspconfig").marksman.setup {}
 require("lspconfig").asm_lsp.setup {
 	capabilities = capabilities,
+	on_attach = n_on_attach,
+}
+
+require("lspconfig").emmet_language_server.setup({
+    -- on_attach = on_attach,
+    capabilities = capabilities,
+	on_attach = n_on_attach,
+})
+
+require("lspconfig").tsserver.setup {
+	capabilities = capabilities,
+	on_attach = n_on_attach,
 }
 
 local pid = vim.fn.getpid()
