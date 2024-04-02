@@ -21,6 +21,8 @@ if not lazy_status then
 end
 
 lazy.setup("plugins");
+vim.o.background = "dark"
+vim.cmd("colorscheme gruvbox")
 -- require("plugins")
 -- require("treesitter-conf")
 -- require("test-plugs")

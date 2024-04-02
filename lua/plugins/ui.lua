@@ -1,6 +1,12 @@
 return {
 
 	{
+		"ellisonleao/gruvbox.nvim",
+		priority = 1000 ,
+		config = true,
+	},
+
+	{
 		"rebelot/kanagawa.nvim",
 		config = function()
 			require("kanagawa").setup {
@@ -48,14 +54,17 @@ return {
 	},
 
 	{
+		enabled = true,
 		"sontungexpt/sttusline",
+		branch = "table_version",
 		dependencies = {
 			"nvim-tree/nvim-web-devicons",
 		},
 		event = { "BufEnter" },
 		config = function(_, opts)
-			require("sttusline-conf.components")
+			-- require("sttusline-conf.components")
 			require("sttusline").setup {
+				statusline_color = "GruvboxGray",
 				-- 0 | 1 | 2 | 3
 				-- recommended: 3
 				laststatus = 3,

@@ -87,6 +87,8 @@ require("lspconfig").lua_ls.setup { settings = {
 
 require("lspconfig").clangd.setup { on_attach = n_on_attach, capabilities = capabilities }
 
+require("lspconfig").wgsl_analyzer.setup { on_attach = n_on_attach, capabilities = capabilities }
+
 --[[ require("lspconfig").rust_analyzer.setup {
   settings = {
 
