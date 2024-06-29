@@ -35,7 +35,15 @@ return {
 						--  vim.keymap.set('n', '<leader>fo', vim.lsp.buf.formatting, bufopts)
 						vim.keymap.set('n', '<leader>fo', vim.lsp.buf.format, bufopts)
 						vim.keymap.set('n', '<leader>dbg', vim.cmd.RustLsp { 'debuggables' }, bufopts)
-					end -- on_attach
+					end, -- on_attach
+					default_settings = {
+						-- rust-analyzer language server configuration
+						['rust-analyzer'] = {
+							checkOnSave = {
+								command = "clippy",
+							},
+						},
+					},
 				},
 			}
 		end
