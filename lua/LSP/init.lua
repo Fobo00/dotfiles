@@ -135,6 +135,11 @@ require("lspconfig").omnisharp.setup {
 	on_attach = n_on_attach,
 }
 
+require("lspconfig").nixd.setup {
+	capabilities = capabilities,
+	on_attach = n_on_attach,
+}
+
 --[[require("lint").linters_by_ft = {
   Lua = { 'selene', }
 }]]
