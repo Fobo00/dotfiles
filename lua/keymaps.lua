@@ -69,9 +69,6 @@ keymap("t", "<C-l>", "<C-\\><C-N><C-w>l", term_opts)
 
 
 
--- keymap("n", "<leader>lg", "<cmd> Telescope live_grep<CR>", opts)
--- keymap("n", "<leader>ff", "<cmd> Telescope find_files<CR>", opts)
-
 
 -- LSP
 vim.keymap.set('n', '<leader>r', vim.diagnostic.open_float, opts)

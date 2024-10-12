@@ -66,12 +66,8 @@ cmp.setup {
 		["<Tab>"] = cmp.mapping(function(fallback)
 			if cmp.visible() then
 				cmp.select_next_item()
-				--[[elseif snippets.expandable() then
-				snippets.expand()]]
-			elseif vim.snippet.jumpable(1) then
-				vim.schedule(function()
-					vim.snippet.jump(1)
-				end)
+			elseif vim.snippet.active({ direction = 1 }) then
+				vim.snippet.jump(1)
 			-- else
 			-- 	vim.schedule(function()
 			-- 		vim.snippet.jump(1)
@@ -79,8 +75,8 @@ cmp.setup {
 			-- end
 				--[[ elseif snippets.expand_or_jumpable() then
 				snippets.expand_or_jump()]]
-			elseif check_backspace() then
-				fallback()
+			-- elseif check_backspace() then
+			-- 	fallback()
 			else
 				fallback()
 			end
@@ -107,10 +103,8 @@ cmp.setup {
 				cmp.select_prev_item()
 				--[[ elseif snippets.jumpable(-1) then
 				snippets.jump(-1)]]
-			elseif vim.snippet.jumpable(-1) then
-				vim.schedule(function()
-					vim.snippet.jump(-1)
-				end)
+			elseif vim.snippet.active({ direction = -1 }) then
+				vim.snippet.jump(-1)
 			else
 				fallback()
 			end

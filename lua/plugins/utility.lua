@@ -35,7 +35,7 @@ return {
 	{
 		'echasnovski/mini.ai',
 		event = "VeryLazy",
-		version = false,
+		version = "*",
 		config = function()
 			require("mini.ai").setup {}
 		end
@@ -43,7 +43,7 @@ return {
 
 	{
 		'echasnovski/mini.comment',
-		version = false,
+		version = "*",
 		config = function()
 			require("mini.comment").setup {}
 		end
@@ -51,7 +51,7 @@ return {
 
 	{
 		'echasnovski/mini.surround',
-		version = false,
+		version = "*",
 		opts = {
 			mappings = {
 				add = '<leader>sa', -- Add surrounding in Normal and Visual modes
@@ -71,7 +71,7 @@ return {
 	{
 		'echasnovski/mini.splitjoin',
 		event = "VeryLazy",
-		version = false,
+		version = "*",
 		opts = {},
 	},
 }

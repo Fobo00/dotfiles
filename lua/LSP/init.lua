@@ -123,7 +123,7 @@ require("lspconfig").emmet_language_server.setup({
 	on_attach = n_on_attach,
 })
 
-require("lspconfig").tsserver.setup {
+require("lspconfig").ts_ls.setup {
 	capabilities = capabilities,
 	on_attach = n_on_attach,
 }

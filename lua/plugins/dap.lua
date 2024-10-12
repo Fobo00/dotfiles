@@ -78,6 +78,7 @@ return {
 
 	{
 		"rcarriga/nvim-dap-ui",
+		enabled = false,
 		requires = "mfussenegger/nvim-dap",
 		config = function()
 			require("dapui").setup()
