@@ -1,37 +1,19 @@
 return {
 
 	{
-		enabled = false,
-		"folke/neodev.nvim",
-		dependencies = {
-			"nvim-lua/plenary.nvim",
-		},
-		--[[opts = {
+		"folke/lazydev.nvim",
+		ft = "lua", -- only load on lua files
+		---@alias lazydev.Library {path:string, words:string[], mods:string[]}
+		---@alias lazydev.Library.spec string|{path:string, words?:string[], mods?:string[]}
+		---@class lazydev.Config
+		opts = {
 			library = {
-				enabled = true,
-				runtime = true,
-				types = true,
-				plugins = true,
+				-- See the configuration section for more details
+				-- Load luvit types when the `vim.uv` word is found
+				{ path = "${3rd}/luv/library", words = { "vim%.uv" } },
+				"lazy.nvim",
 			},
-			override = function(root_dir, library)
-				library.enabled = true
-				library.plugins = true
-			end,
-			setup_jsonls = true,
-			lspconfig = true,
-			pathStrict = false,
-		},]]
-		opts = {},
-		--[[config = function()
-			require("neodev").setup {
-				override = function(root_dir, library)
-					library.enabled = true
-					library.plugins = true
-				end,
-				-- lspconfig = true,
-				pathStrict = true,
-			}
-		end]]
+		},
 	},
 
 	-- CMP Plugins

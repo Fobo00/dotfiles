@@ -77,8 +77,8 @@ require("mason-lspconfig").setup()
 
 require("lspconfig").lua_ls.setup { settings = {
 	Lua = {
-		workspace = {
-			library = { [vim.fn.expand("$VIMRUNTIME/lua")] = true, [vim.fn.stdpath("config") .. "/lua"] = true, }, },
+		-- workspace = {
+		-- 	library = { [vim.fn.expand("$VIMRUNTIME/lua")] = true, [vim.fn.stdpath("config") .. "/lua"] = true, }, },
 		completion = {
 			callSnippet = "Replace",
 		}

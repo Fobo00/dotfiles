@@ -134,6 +134,7 @@ cmp.setup {
 	sources = {
 		{ name = "snippets" },
 		{ name = "nvim_lsp" },
+		{ name = "lazydev", group_index = 0 },
 		--    { name = "nvim_lsp_signature_help" },
 		{ name = "nvim_lua" },
 		--   { name = "neorg" },
