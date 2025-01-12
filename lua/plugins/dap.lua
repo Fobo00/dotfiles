@@ -12,7 +12,7 @@ return {
 		"mfussenegger/nvim-dap",
 		-- requires = "rcarriga/nvim-dap-ui",
 		keys = {
-			{ "<leader>b",   ":lua require'dap'.toggle_breakpoint() <CR>", "n", { silent = true } },
+			{ "<leader><C-b>",   ":lua require'dap'.toggle_breakpoint() <CR>", "n", { silent = true } },
 			{ "<leader>dbg", ":lua require'dap'.continue() <CR>",          "n", { silent = true } },
 			{ "<leader>dui", ":lua require'dap'.repl.open() <CR>",         "n", { silent = true } },
 		},

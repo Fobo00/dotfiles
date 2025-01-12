@@ -7,6 +7,17 @@ return {
 	},
 
 	{
+		"EL-MASTOR/bufferlist.nvim",
+		lazy = true,
+		keys = {
+			{ "<leader>b", "<cmd> BufferList<CR>", desc = "Open bufferlist" }
+		},
+		dependencies = "nvim-tree/nvim-web-devicons",
+		cmd = "BufferList",
+		opts = {},
+	},
+
+	{
 		"rebelot/kanagawa.nvim",
 		config = function()
 			require("kanagawa").setup {
@@ -94,6 +105,14 @@ return {
 				},
 			}
 		end,
+	},
+
+	{
+		'norcalli/nvim-colorizer.lua',
+		event = "BufEnter",
+		config = function()
+			require("colorizer").setup {}
+		end
 	},
 
 	{
