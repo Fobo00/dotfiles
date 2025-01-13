@@ -19,7 +19,7 @@ return {
 
 	{
 		"hrsh7th/nvim-deck",
-		enabled = false,
+		enabled = not vim.uv.os_uname().sysname == "Windows_NT",
 		lazy = false,
 		config = function()
 			local deck = require("deck")
@@ -59,9 +59,9 @@ return {
 			-- deck.setup({ })
 		end,
 		keys = {
-			{ "<leader>ff", "<cmd> Deck files<CR>", desc = 'Show recent files, buffers, and more' },
-			{ "<leader>gr", "<cmd> Deck grep<CR>", desc = 'Start grep search'},
-			{ "<leader>hg", "<cmd> Deck helpgrep<CR>", desc = 'Live grep all help tags' },
+			-- { "<leader>ff", "<cmd> Deck files<CR>", desc = 'Show recent files, buffers, and more' },
+			-- { "<leader>gr", "<cmd> Deck grep<CR>", desc = 'Start grep search'},
+			-- { "<leader>hg", "<cmd> Deck helpgrep<CR>", desc = 'Live grep all help tags' },
 		}
 	},
 
