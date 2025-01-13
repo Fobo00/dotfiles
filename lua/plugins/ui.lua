@@ -72,39 +72,37 @@ return {
 			"nvim-tree/nvim-web-devicons",
 		},
 		event = { "BufEnter" },
-		config = function(_, opts)
-			-- require("sttusline-conf.components")
-			require("sttusline").setup {
-				statusline_color = "GruvboxGray",
-				-- 0 | 1 | 2 | 3
-				-- recommended: 3
-				laststatus = 3,
-				disabled = {
-					filetypes = {
-						"NvimTree",
-						"lazy",
-					},
-					buftypes = {
-						"terminal",
-					},
+		opts = {
+			statusline_color = "GruvboxGray",
+			-- 0 | 1 | 2 | 3
+			-- recommended: 3
+			laststatus = 3,
+			disabled = {
+				filetypes = {
+					"NvimTree",
+					"lazy",
 				},
-				components = {
-					"mode",
-					"filename",
-					"git-branch",
-					"git-diff",
-					"datetime",
-					"%=",
-					"diagnostics",
-					"lsps-formatters",
-					"copilot",
-					"indent",
-					"encoding",
-					"pos-cursor",
-					"pos-cursor-progress",
+				buftypes = {
+					"terminal",
 				},
-			}
-		end,
+			},
+			components = {
+				"mode",
+				"filename",
+				"git-branch",
+				"git-diff",
+				"datetime",
+				"%=",
+				"diagnostics",
+				"lsps-formatters",
+				"copilot",
+				"indent",
+				"encoding",
+				"pos-cursor",
+				"pos-cursor-progress",
+			},
+
+		},
 	},
 
 	{
