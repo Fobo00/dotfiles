@@ -74,7 +74,7 @@ local rust_on_attach = function(_, bufnr)
 	vim.keymap.set('n', '<leader>ca', ":RustCodeAction<CR>", bufopts)
 	vim.keymap.set('n', 'gr', vim.lsp.buf.references, bufopts)
 	--  vim.keymap.set('n', '<leader>fo', vim.lsp.buf.formatting, bufopts)
-	vim.keymap.set('n', '<leader>fo', vim.lsp.buf.format, bufopts)
+	vim.keymap.set('n', '<leader>fo', vim.lsp.buf.format, vim.tbl_extend('force', bufopts, { desc = "Format File"}))
 end -- on_attach
 
 

@@ -34,9 +34,9 @@ local n_on_attach = function(client, bufnr)
 	local actions_ok, actions = pcall(require, "actions-preview")
 	if not actions_ok then
 		-- print("actions-preview not found!")
-		vim.keymap.set('n', '<leader>ca', vim.lsp.buf.code_action, bufopts)
+		vim.keymap.set('n', '<leader>ca', vim.lsp.buf.code_action, vim.tbl_extend('force', bufopts, { desc = "Code Actions"}))
 	else
-		vim.keymap.set('n', '<leader>ca', actions.code_actions, bufopts)
+		vim.keymap.set('n', '<leader>ca', actions.code_actions, vim.tbl_extend('force', bufopts, { desc = "Code Actions"}))
 	end
 
 
