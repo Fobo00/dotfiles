@@ -11,7 +11,12 @@ return {
 		keys = {
 			{ "<leader>lg", "<cmd> Telescope live_grep<CR>",   "n" },
 			{ "<leader>ff", "<cmd> Telescope find_files<CR>",  "n" },
-			{ "<leader>td", "<cmd> Telescope diagnostics<CR>", "n" },
+			{ "<leader>fd", "<cmd> Telescope diagnostics<CR>", "n" },
+			{ "<leader>fp", function ()
+				require('telescope.builtin').find_files {
+					cwd = vim.fs.joinpath(vim.fn.stdpath("data"), "lazy")
+				}
+			end, { desc = "[F]ind in [P]ackages"}}
 		},
 		cmd = "Telescope find_files",
 		event = "VeryLazy",
@@ -19,7 +24,7 @@ return {
 
 	{
 		"hrsh7th/nvim-deck",
-		enabled = not vim.uv.os_uname().sysname == "Windows_NT",
+		-- enabled = not vim.uv.os_uname().sysname == "Windows_NT",
 		lazy = false,
 		config = function()
 			local deck = require("deck")
