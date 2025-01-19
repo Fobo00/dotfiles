@@ -8,6 +8,13 @@ return {
 				-- or leave it empty to use the default settings
 				-- refer to the configuration section below
 				-- https://github.com/folke/which-key.nvim?tab=readme-ov-file#%EF%B8%8F-configuration
+				spec = {
+					{ "<leader>t", group = "[T]oggle" },
+					{ "<leader>s", group = "[S]urround" },
+					{ "<leader>c", group = "[C]ode" },
+					{ "<leader>d", group = "[D]ebug" },
+					{ "<leader>w", group = "[W]orkspace" },
+				}
 			},
 			keys = {
 				{
