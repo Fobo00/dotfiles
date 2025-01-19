@@ -17,6 +17,7 @@ return {
 	},
 
 	{
+		enabled = false,
 		"kdheepak/lazygit.nvim",
 		lazy = true,
 		cmd = {
@@ -38,6 +39,7 @@ return {
 	},
 
 	{
+		enabled = false,
 		"gbprod/yanky.nvim",
 		opts = {},
 		-- config = function()

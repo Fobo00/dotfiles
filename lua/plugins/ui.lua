@@ -2,7 +2,7 @@ return {
 
 	{
 		"ellisonleao/gruvbox.nvim",
-		priority = 1000 ,
+		priority = 1000,
 		config = true,
 	},
 
@@ -31,7 +31,7 @@ return {
 	},
 
 	{
-		-- enabled = false,
+		enabled = false,
 		'goolord/alpha-nvim',
 		event = "VimEnter",
 		dependencies = { 'nvim-tree/nvim-web-devicons' },
@@ -51,6 +51,7 @@ return {
 
 	{
 		'echasnovski/mini.indentscope',
+		enabled = false,
 		event = "VeryLazy",
 		version = false,
 		opts = {}
@@ -62,6 +63,19 @@ return {
 		keys = {
 			{ "<leader><A-m>", "<cmd>lua require('dropbar.api').pick()<cr>" }
 		}
+	},
+
+	{
+		"rachartier/tiny-inline-diagnostic.nvim",
+		event = "VeryLazy", -- Or `LspAttach`
+		priority = 1000, -- needs to be loaded in first
+		opts = {
+			preset = "powerline",
+			options = {
+				multilines = { enabled = true },
+				break_line = { enabled = true },
+			},
+		},
 	},
 
 	{
@@ -106,11 +120,12 @@ return {
 	},
 
 	{
-		'norcalli/nvim-colorizer.lua',
-		event = "BufEnter",
-		config = function()
-			require("colorizer").setup {}
-		end
+		'stevearc/quicker.nvim',
+		enabled = false,
+		event = "FileType qf",
+		---@module "quicker"
+		---@type quicker.SetupOptions
+		opts = {},
 	},
 
 	{
