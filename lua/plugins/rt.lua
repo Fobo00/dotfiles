@@ -34,7 +34,7 @@ return {
 						vim.keymap.set('n', '<leader>ca', ":RustLsp codeAction<CR>", bufopts)
 						vim.keymap.set('n', 'gr', vim.lsp.buf.references, bufopts)
 						--  vim.keymap.set('n', '<leader>fo', vim.lsp.buf.formatting, bufopts)
-						vim.keymap.set('n', '<leader>fo', vim.lsp.buf.format, bufopts)
+						vim.keymap.set('n', '<leader>fo', vim.lsp.buf.format, vim.tbl_extend('force', bufopts, { desc = "Format File"}))
 						vim.keymap.set('n', '<leader>dbg', vim.cmd.RustLsp { 'debuggables' }, bufopts)
 					end, -- on_attach
 					default_settings = {
