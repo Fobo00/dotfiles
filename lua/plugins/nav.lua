@@ -74,6 +74,25 @@ return {
 	},
 
 	{
+		'stevearc/oil.nvim',
+		---@module 'oil'
+		---@type oil.SetupOpts
+		opts = {
+			columns = {
+				"icons",
+				"size",
+			},
+			delete_to_trash = true,
+		},
+		-- Optional dependencies
+		dependencies = { "nvim-tree/nvim-web-devicons" }, -- use if prefer nvim-web-devicons
+		keys = {
+			{ "<leader>/", ":Oil<CR>", desc = "Oil" },
+		}
+	},
+
+	{
+		enabled = false,
 		"kyazdani42/nvim-tree.lua",
 		dependencies = "nvim-tree/nvim-web-devicons",
 		version = "nightly",
