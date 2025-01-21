@@ -10,6 +10,9 @@ return {
 		},
 		keys = {
 			{ "<leader>lg", "<cmd> Telescope live_grep<CR>",   "n" },
+			{ "<leader>mg", function ()
+				require("multigrep").multigrep()
+			end, desc = "[M]ulti [G]rep"},
 			{ "<leader>ff", "<cmd> Telescope find_files<CR>",  "n" },
 			{ "<leader>fd", "<cmd> Telescope diagnostics<CR>", "n" },
 			{ "<leader>fp", function ()
@@ -96,6 +99,6 @@ return {
 		end
 	},
 
-	"LintaoAmons/cd-project.nvim",
+	-- "LintaoAmons/cd-project.nvim",
 
 }
