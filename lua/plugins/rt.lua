@@ -6,6 +6,25 @@ return {
 		version = '^5', -- Recommended,
 		lazy = false,
 		config = function()
+
+			-- local extension_path = vim.env.HOME .. '/AppData/Local/nvim-data/mason/packages/codelldb/extension'
+			-- local codelldb_path = extension_path .. '/adapter/codelldb'
+			-- local liblldb_path = extension_path .. '/lldb/lib/liblldb'
+			-- local this_os = vim.uv.os_uname().sysname;
+			--
+			-- if this_os:find "Windows" then
+			-- 	codelldb_path = extension_path .. "\\adapter\\codelldb.exe"
+			-- 	liblldb_path = extension_path .. "\\lldb\\bin\\liblldb.dll"
+			-- else
+			-- 	-- The liblldb extension is .so for Linux and .dylib for MacOS
+			-- 	liblldb_path = liblldb_path .. (this_os == "Linux" and ".so" or ".dylib")
+			-- end
+			--
+			-- local cfg = require("rustaceanvim.config")
+			-- dap = {
+			-- 	adapter = cfg.get_codelldb_adapter(codelldb_path, liblldb_path),
+			-- },
+
 			vim.g.rustaceanvim = {
 				server = {
 					on_attach = function(_, bufnr)
