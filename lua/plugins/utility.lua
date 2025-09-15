@@ -17,25 +17,20 @@ return {
 	},
 
 	{
-		enabled = false,
-		"kdheepak/lazygit.nvim",
+		"OXY2DEV/patterns.nvim",
 		lazy = true,
-		cmd = {
-			"LazyGit",
-			"LazyGitConfig",
-			"LazyGitCurrentFile",
-			"LazyGitFilter",
-			"LazyGitFilterCurrentFile",
-		},
-		-- optional for floating window border decoration
-		dependencies = {
-			"nvim-lua/plenary.nvim",
-		},
-		-- setting the keybinding for LazyGit with 'keys' is recommended in
-		-- order to load the plugin when the command is run for the first time
-		keys = {
-			{ "<leader>lg", "<cmd>LazyGit<cr>", desc = "LazyGit" }
-		}
+		config = function ()
+			local parser_configs = require("nvim-treesitter.parsers").get_parser_configs();
+
+			parser_configs.lua_patterns = {
+				install_info = {
+					url = "https://github.com/OXY2DEV/tree-sitter-lua_patterns",
+					files = { "src/parser.c" },
+					branch = "main",
+				},
+			}
+		end,
+		cmd = "Patterns",
 	},
 
 	{
@@ -62,12 +57,24 @@ return {
 	},
 
 	{
+		'echasnovski/mini.align',
+		version = '*',
+		opts = {},
+	},
+
+	{
 		'echasnovski/mini.comment',
 		version = "*",
 		opts = {},
 		-- config = function()
 		-- 	require("mini.comment").setup {}
 		-- end
+	},
+
+	{
+		'echasnovski/mini.sessions',
+		version = '*',
+		opts = {},
 	},
 
 	{
