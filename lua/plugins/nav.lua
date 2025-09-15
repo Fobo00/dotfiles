@@ -1,5 +1,6 @@
 return {
 
+
 	{
 		"nvim-telescope/telescope.nvim",
 		enabled = true,
@@ -78,22 +79,45 @@ return {
 		cmd = { "Deck files", "Deck grep", "Deck helpgrep" },
 	},
 
+	-- {
+	-- 	'stevearc/oil.nvim',
+	-- 	---@module 'oil'
+	-- 	---@type oil.SetupOpts
+	-- 	opts = {
+	-- 		-- columns = {
+	-- 		-- 	"icons",
+	-- 		-- 	"size",
+	-- 		-- },
+	-- 		delete_to_trash = true,
+	-- 	},
+	-- 	-- Optional dependencies
+	-- 	dependencies = { "nvim-tree/nvim-web-devicons" }, -- use if prefer nvim-web-devicons
+	-- 	keys = {
+	-- 		-- { "<leader>/", ":Oil<CR>", desc = "Oil" },
+	-- 	}
+	-- },
+
 	{
-		'stevearc/oil.nvim',
-		---@module 'oil'
-		---@type oil.SetupOpts
+		'echasnovski/mini.files',
+		version = '*',
 		opts = {
-			columns = {
-				"icons",
-				"size",
+			options = {
+				permanent_delete = false,
+				use_as_default_explorer = false,
 			},
-			delete_to_trash = true,
+			windows = {
+				preview = true,
+			}
 		},
-		-- Optional dependencies
-		dependencies = { "nvim-tree/nvim-web-devicons" }, -- use if prefer nvim-web-devicons
 		keys = {
-			{ "<leader>/", ":Oil<CR>", desc = "Oil" },
-		}
+			{
+				"<leader>/",
+				function()
+					MiniFiles.open()
+				end,
+				desc = "Open MiniFiles"
+			}
+		},
 	},
 
 	{
