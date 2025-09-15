@@ -1,6 +1,9 @@
 vim.g.mapleader = " "
 vim.g.maplocalleader = " "
+
 return {
+
+	{ dir = "D:/present.nvim" },
 
 	{
 		enabled = false,
