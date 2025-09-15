@@ -32,7 +32,7 @@ return {
 	{
 		"hrsh7th/nvim-deck",
 		-- enabled = not vim.uv.os_uname().sysname == "Windows_NT",
-		lazy = false,
+		lazy = true,
 		config = function()
 			local deck = require("deck")
 			-- Apply pre-defined easy settings.
@@ -74,7 +74,8 @@ return {
 			-- { "<leader>ff", "<cmd> Deck files<CR>", desc = 'Show recent files, buffers, and more' },
 			-- { "<leader>gr", "<cmd> Deck grep<CR>", desc = 'Start grep search'},
 			-- { "<leader>hg", "<cmd> Deck helpgrep<CR>", desc = 'Live grep all help tags' },
-		}
+		},
+		cmd = { "Deck files", "Deck grep", "Deck helpgrep" },
 	},
 
 	{
