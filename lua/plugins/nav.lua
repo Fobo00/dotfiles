@@ -10,16 +10,20 @@ return {
 		},
 		keys = {
 			{ "<leader>lg", "<cmd> Telescope live_grep<CR>",   "n" },
-			{ "<leader>mg", function ()
-				require("multigrep").multigrep()
-			end, desc = "[M]ulti [G]rep"},
+			{
+				"<leader>mg",
+				function()
+					require("multigrep").multigrep()
+				end,
+				desc = "[M]ulti [G]rep"
+			},
 			{ "<leader>ff", "<cmd> Telescope find_files<CR>",  "n" },
 			{ "<leader>fd", "<cmd> Telescope diagnostics<CR>", "n" },
-			{ "<leader>fp", function ()
+			{ "<leader>fp", function()
 				require('telescope.builtin').find_files {
 					cwd = vim.fs.joinpath(vim.fn.stdpath("data"), "lazy")
 				}
-			end, { desc = "[F]ind in [P]ackages"}}
+			end, { desc = "[F]ind in [P]ackages" } }
 		},
 		cmd = "Telescope find_files",
 		event = "VeryLazy",
