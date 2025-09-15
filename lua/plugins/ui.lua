@@ -7,6 +7,17 @@ return {
 	},
 
 	{
+		"OXY2DEV/markview.nvim",
+		opts = {},
+		lazy = false
+	},
+
+	{
+		"OXY2DEV/helpview.nvim",
+		opts = {}
+	},
+
+	{
 		"EL-MASTOR/bufferlist.nvim",
 		lazy = true,
 		keys = {
@@ -19,25 +30,15 @@ return {
 
 	{
 		"rebelot/kanagawa.nvim",
+		enabled = false,
+		event = "VeryLazy",
 		config = function()
 			require("kanagawa").setup {
 				compile = true,
 				theme = "dragon",
-				colors = require("kan-colors"),
 				functionStyle = { bold = true, italic = true },
 			}
-			require("kanagawa").load("dragon")
-		end
-	},
-
-	{
-		enabled = false,
-		'goolord/alpha-nvim',
-		event = "VimEnter",
-		dependencies = { 'nvim-tree/nvim-web-devicons' },
-		config = function()
-			require("screen")
-		end
+		end,
 	},
 
 	{
@@ -50,14 +51,6 @@ return {
 	},
 
 	{
-		'echasnovski/mini.indentscope',
-		enabled = false,
-		event = "VeryLazy",
-		version = false,
-		opts = {}
-	},
-
-	{
 		'Bekaboo/dropbar.nvim',
 		lazy = false,
 		keys = {
@@ -66,8 +59,16 @@ return {
 	},
 
 	{
+		"j-hui/fidget.nvim",
+		event = "LspAttach",
+		opts = {
+			-- options
+		},
+	},
+
+	{
 		"rachartier/tiny-inline-diagnostic.nvim",
-		event = "VeryLazy", -- Or `LspAttach`
+		event = "LspAttach", -- Or `LspAttach`
 		priority = 1000, -- needs to be loaded in first
 		opts = {
 			preset = "powerline",
@@ -76,10 +77,19 @@ return {
 				break_line = { enabled = true },
 			},
 		},
+		-- keys = {
+		-- 	{
+		-- 		"<leader>ti",
+		-- 		function()
+		-- 			require("tiny-inline-diagnostic").toggle()
+		-- 		end,
+		-- 		desc = "[T]oggle tiny [I]nline diagnostics"
+		-- 	}
+		-- }
 	},
 
 	{
-		enabled = true,
+		enabled = false,
 		"sontungexpt/sttusline",
 		branch = "table_version",
 		dependencies = {
@@ -120,6 +130,32 @@ return {
 	},
 
 	{
+		-- Calls `require('slimline').setup({})`
+		enabled = true,
+		"sschleemilch/slimline.nvim",
+		opts = {
+			spaces = {
+				components = "─",
+				left = "─",
+				right = "─",
+			},
+			sep = {
+				hide = {
+					first = true,
+					last = true,
+				},
+				left = "",
+				right = "",
+			},
+		},
+		init = function ()
+			vim.opt.fillchars = {
+				stl = "─",
+			}
+		end
+	},
+
+	{
 		'stevearc/quicker.nvim',
 		enabled = false,
 		event = "FileType qf",
@@ -134,15 +170,18 @@ return {
 		config = function()
 			require("noice").setup({
 				-- add any options here
+				notify = {
+					enabled = false
+				},
 				lsp = {
 					-- override markdown rendering so that **cmp** and other plugins use **Treesitter**
 					override = {
 						["vim.lsp.util.convert_input_to_markdown_lines"] = true,
 						["vim.lsp.util.stylize_markdown"] = true,
-						["cmp.entry.get_documentation"] = true,
+						["cmp.entry.get_documentation"] = true, -- requires hrsh7th/nvim-cmp,
 					},
 					signature = {
-						enabled = false,
+						enabled = true,
 						auto_open = {
 							enabled = true,
 							trigger = true, -- Automatically show signature help when typing a trigger character from the LSP
@@ -169,7 +208,7 @@ return {
 			-- OPTIONAL:
 			--   `nvim-notify` is only needed, if you want to use the notification view.
 			--   If not available, we use `mini` as the fallback
-			"rcarriga/nvim-notify",
+			-- "rcarriga/nvim-notify",
 		},
 	},
 
