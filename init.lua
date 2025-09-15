@@ -30,7 +30,6 @@ vim.g.maplocalleader = " "
 lazy.setup("plugins");
 vim.o.background = "dark"
 vim.cmd("colorscheme gruvbox")
-local wk = require("which-key")
 -- require("plugins")
 -- require("treesitter-conf")
 -- require("test-plugs")
