@@ -11,6 +11,7 @@ return {
 				-- See the configuration section for more details
 				-- Load luvit types when the `vim.uv` word is found
 				{ path = "${3rd}/luv/library", words = { "vim%.uv" } },
+				{ path = "snacks.nvim", words = { "Snacks" } },
 				"lazy.nvim",
 			},
 		},
@@ -47,16 +48,13 @@ return {
 	{
 		enabled = false,
 		"windwp/nvim-autopairs",
-		config = function() require("nvim-autopairs").setup {} end,
-		-- dependencies = { "boltlessengineer/smart-tab.nvim", config = function() require("smart-tab").setup {} end }
+		opts = {},
 	},
 
 	{
 		'echasnovski/mini.pairs',
 		version = false,
-		config = function()
-			require("mini.pairs").setup {}
-		end
+		opts = {},
 	},
 
 	-- LSP
@@ -68,7 +66,7 @@ return {
 			require("LSP")
 		end,
 		dependencies = {
-			{ "simrat39/inlay-hints.nvim", config = function() require("inlay-hints").setup {} end },
+			-- { "simrat39/inlay-hints.nvim", config = function() require("inlay-hints").setup {} end },
 			"mason.nvim",
 			"williamboman/mason-lspconfig.nvim",
 			"https://git.sr.ht/~p00f/clangd_extensions.nvim"
@@ -79,7 +77,22 @@ return {
 		"williamboman/mason.nvim",
 		cmd = "Mason",
 		build = "MasonUpdate",
-		dependencies = { "williamboman/mason-lspconfig.nvim", "mason-nvim-dap.nvim" },
+		dependencies = {
+			{
+				"williamboman/mason-lspconfig.nvim",
+				opts = {},
+			},
+			"mason-nvim-dap.nvim"
+		},
+		opts = {
+			ui = {
+				icons = {
+					package_installed = "✓",
+					package_pending = "➜",
+					package_uninstalled = "✗"
+				}
+			}
+		}
 	},
 
 	{
