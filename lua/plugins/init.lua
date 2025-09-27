@@ -3,8 +3,6 @@ vim.g.maplocalleader = " "
 
 return {
 
-	{ dir = "D:/present.nvim" },
-
 	{
 		enabled = false,
 		"lewis6991/impatient.nvim", -- Fast
