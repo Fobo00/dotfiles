@@ -67,23 +67,24 @@ return {
 		end,
 		dependencies = {
 			-- { "simrat39/inlay-hints.nvim", config = function() require("inlay-hints").setup {} end },
-			"mason.nvim",
 			"williamboman/mason-lspconfig.nvim",
+			"mason.nvim",
 			"https://git.sr.ht/~p00f/clangd_extensions.nvim"
 		},
+	},
+
+	{
+		"williamboman/mason-lspconfig.nvim",
+		opts = {},
+		dependencies = {
+			"williamboman/mason.nvim",
+		}
 	},
 
 	{
 		"williamboman/mason.nvim",
 		cmd = "Mason",
 		build = "MasonUpdate",
-		dependencies = {
-			{
-				"williamboman/mason-lspconfig.nvim",
-				opts = {},
-			},
-			"mason-nvim-dap.nvim"
-		},
 		opts = {
 			ui = {
 				icons = {
