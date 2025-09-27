@@ -8,7 +8,11 @@ return {
 
 	{
 		"OXY2DEV/markview.nvim",
-		opts = {},
+		opts = {
+			experimental = {
+				check_rtp_message = false,
+			}
+		},
 		lazy = false
 	},
 
