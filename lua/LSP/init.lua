@@ -156,4 +156,5 @@ vim.lsp.enable({
 	"ts_ls",
 	"omnisharp",
 	"nixd",
+	"systemd_ls",
 })
