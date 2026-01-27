@@ -150,6 +150,7 @@ vim.lsp.enable({
 	"hls",
 	"wgsl_analyzer",
 	"marksman",
+	"basedpyright",
 	"asm_lsp",
 	"emmet_language_server",
 	"ts_ls",
