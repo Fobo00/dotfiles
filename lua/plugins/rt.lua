@@ -3,7 +3,7 @@ return {
 	---------------------------------------Rust----------------------------------------
 	{
 		'mrcjkb/rustaceanvim',
-		version = '^5', -- Recommended,
+		-- version = '^5', -- Recommended,
 		lazy = false,
 		config = function()
 
@@ -58,11 +58,11 @@ return {
 					end, -- on_attach
 					default_settings = {
 						-- rust-analyzer language server configuration
-						['rust-analyzer'] = {
-							checkOnSave = {
-								command = "clippy",
-							},
-						},
+						-- ['rust-analyzer'] = {
+						-- 	checkOnSave = {
+						-- 		command = "clippy",
+						-- 	},
+						-- },
 					},
 				},
 			}
