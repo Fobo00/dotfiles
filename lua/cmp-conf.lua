@@ -8,11 +8,6 @@ if not pair_status_ok then
 	return
 end]]
 
-local check_backspace = function()
-	local col = vim.fn.col "." - 1
-	return col == 0 or vim.fn.getline("."):sub(col, col):match "%s"
-end
-
 --   פּ ﯟ   some other good icons
 local kind_icons = {
 	Text = "",
@@ -68,41 +63,15 @@ cmp.setup {
 				cmp.select_next_item()
 			elseif vim.snippet.active({ direction = 1 }) then
 				vim.snippet.jump(1)
-			-- else
-			-- 	vim.schedule(function()
-			-- 		vim.snippet.jump(1)
-			-- 	end)
-			-- end
-				--[[ elseif snippets.expand_or_jumpable() then
-				snippets.expand_or_jump()]]
-			-- elseif check_backspace() then
-			-- 	fallback()
 			else
 				fallback()
 			end
 		end, {
 			"i", "s"
 		}),
-		-- ["<Tab>"] = cmp.mapping(function(fallback)
-		-- 	if cmp.visible() then
-		-- 		cmp.select_next_item()
-		-- 		--[[elseif snippets.expandable() then
-		-- 		snippets.expand()]]
-		-- 		--[[ elseif snippets.expand_or_jumpable() then
-		-- 		snippets.expand_or_jump()]]
-		-- 	else
-		-- 		vim.schedule(function()
-		-- 			vim.snippet.jump(1)
-		-- 		end)
-		-- 	end
-		-- end, {
-		-- 	"s",
-		-- }),
 		["<S-Tab>"] = cmp.mapping(function(fallback)
 			if cmp.visible() then
 				cmp.select_prev_item()
-				--[[ elseif snippets.jumpable(-1) then
-				snippets.jump(-1)]]
 			elseif vim.snippet.active({ direction = -1 }) then
 				vim.snippet.jump(-1)
 			else
@@ -117,13 +86,13 @@ cmp.setup {
 		fields = { "kind", "abbr", "menu" },
 		format = function(entry, vim_item)
 			-- Kind icons
-			vim_item.kind = string.format("%s", kind_icons[vim_item.kind])
-			-- vim_item.kind = string.format('%s %s', kind_icons[vim_item.kind], vim_item.kind) -- This concatonates the icons with the name of the item kind
+			-- vim_item.kind = string.format("%s", kind_icons[vim_item.kind])
+			vim_item.kind = string.format('%s %s', kind_icons[vim_item.kind], vim_item.kind) -- This concatonates the icons with the name of the item kind
 			vim_item.menu = ({
 				nvim_lua = "[NVIM_LUA]",
 				nvim_lsp = "[NVIM_LSP]",
+				vimtex = "[Vimtex]",
 				snippets = "[Snippet]",
-				--        neorg = "[Neorg]",
 				buffer = "[Buffer]",
 				path = "[Path]",
 				-- crates = "[Crates]",
@@ -132,15 +101,13 @@ cmp.setup {
 		end,
 	},
 	sources = {
-		{ name = "snippets" },
 		{ name = "nvim_lsp" },
+		{ name = "snippets" },
 		{ name = "lazydev", group_index = 0 },
-		--    { name = "nvim_lsp_signature_help" },
 		{ name = "nvim_lua" },
-		--   { name = "neorg" },
 		{ name = "buffer" },
 		{ name = "path" },
-		-- { name = "crates" },
+		{ name = "vimtex" },
 	},
 	confirm_opts = {
 		behavior = cmp.ConfirmBehavior.Replace,
@@ -156,26 +123,6 @@ cmp.setup {
 		native_menu = false,
 	},
 }
-
--- local handlers = require("nvim-autopairs.completion.handlers")
-
--- autopairs
---[[cmp.event:on(
-	'confirm_done',
-	auto_pairs.on_confirm_done({
-		filetypes = {
-			["*"] = {
-				["("] = {
-					kind = {
-						cmp.lsp.CompletionItemKind.Function,
-						cmp.lsp.CompletionItemKind.Method,
-					},
-					handler = handlers["*"]
-				}
-			},
-		}
-	})
-)]]
 
 -- vim.lsp.util.stylize_markdown = function(bufnr, contents, opts)
 -- 	contents = vim.lsp.util._normalize_markdown(contents, {
