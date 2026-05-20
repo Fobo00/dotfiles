@@ -29,6 +29,7 @@ return {
 			"hrsh7th/cmp-buffer",
 			"hrsh7th/cmp-cmdline", -- cmdline completions
 			"hrsh7th/cmp-nvim-lua",
+			"micangl/cmp-vimtex",
 			"hrsh7th/cmp-path", -- path completions
 			{
 				"garymjr/nvim-snippets",
@@ -62,6 +63,13 @@ return {
 		-- enabled = false,
 		"neovim/nvim-lspconfig",
 		event = "BufEnter",
+		init_options = {
+			userLanguages = {
+				eelixir = "html-eex",
+				eruby = "erb",
+				rust = "html",
+			},
+		},
 		config = function()
 			require("LSP")
 		end,
@@ -84,7 +92,6 @@ return {
 	{
 		"williamboman/mason.nvim",
 		cmd = "Mason",
-		build = "MasonUpdate",
 		opts = {
 			ui = {
 				icons = {
