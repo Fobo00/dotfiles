@@ -30,10 +30,10 @@ vim.g.maplocalleader = " "
 lazy.setup("plugins");
 vim.o.background = "dark"
 vim.cmd("colorscheme gruvbox")
--- require("plugins")
--- require("treesitter-conf")
--- require("test-plugs")
 
-
--- vim.cmd("colorscheme kanagawa-dragon")
--- print(vim.uv.now())
+vim.api.nvim_create_autocmd('FileType', {
+	pattern = { 'javascript', 'typescript', 'rust', 'c', 'c++', 'nu' },
+	callback = function()
+		vim.treesitter.start()
+	end
+})
