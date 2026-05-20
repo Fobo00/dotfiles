@@ -34,6 +34,7 @@ local options = {
   scrolloff      = 8,                                   -- is one of my fav
   sidescrolloff  = 8,
   guifont        = "Hack Nerd Font Mono",               -- the font used in graphical neovim applications
+  spelllang 	 = { "en", "fr", "it", "de" },			-- the languages used in spell checking
 }
 
 vim.opt.shortmess:append "c"
@@ -45,6 +46,3 @@ end
 vim.cmd "set whichwrap+=<,>,[,],h,l"
 vim.cmd [[set iskeyword+=-]]
 vim.cmd [[set formatoptions-=cro]] -- TODO: this doesn't seem to work
--- vim.cmd [[set foldmethod=expr]]
--- vim.cmd [[set foldexpr=nvim_treesitter#foldexpr()]]
--- vim.cmd [[set nofoldenable]]

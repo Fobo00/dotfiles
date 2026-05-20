@@ -73,4 +73,3 @@ keymap("t", "<C-l>", "<C-\\><C-N><C-w>l", term_opts)
 -- LSP
 vim.keymap.set('n', '<leader>r', vim.diagnostic.open_float, opts)
 -- vim.keymap.set("n", "<leader><A-m>", require"dropbar.api".pick, opts)
-vim.keymap.set('n', 'P', ":YankyRingHistory<CR>", opts)
