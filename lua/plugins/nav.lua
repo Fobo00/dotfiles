@@ -76,7 +76,7 @@ return {
 			-- { "<leader>gr", "<cmd> Deck grep<CR>", desc = 'Start grep search'},
 			-- { "<leader>hg", "<cmd> Deck helpgrep<CR>", desc = 'Live grep all help tags' },
 		},
-		cmd = { "Deck files", "Deck grep", "Deck helpgrep" },
+		-- cmd = { "Deck files", "Deck grep", "Deck helpgrep" },
 	},
 
 	-- {

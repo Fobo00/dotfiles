@@ -33,6 +33,8 @@ return {
 						vim.g.maplocalleader = " "
 						vim.api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
 
+						vim.wo[0][0].foldmethod = "expr"
+						vim.wo[0][0].foldexpr = 'v:vim.treesitter.foldexpr()'
 
 						-- Mappings.
 						-- See `:help vim.lsp.*` for documentation on any of the below functions
